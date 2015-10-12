@@ -19,14 +19,15 @@ for i=1:n
     H(2*i+1,1) = y(i);
     H(2*i+1,2) = yp(i);
     if i ~= 1
-        H(2*i,2) = (H(2*i,1) - H(2*i,1))/(z(2*i+1)-z(2*i));
+        H(2*i,2) = (H(2*i,1) - H(2*i-1,1))/(z(2*i)-z(2*i-1));
     end;
 end;
 
 for i=3:2*n
     for j=3:i
         %disp('hello')
-        %fprintf('%d',H(i+1,j));
-        %H(i,j)=(H(i+1,j)-H(i,j))/(z(i)-z(i-j+1));
+        fprintf('%d',H(i+1,j-1));
+        H(i+1,j) = 2
+        %H(i+1,j) = (H(i+1,j-1)-H(i,j-1))/(z(i+1)-z(i-j));
     end;
 end;

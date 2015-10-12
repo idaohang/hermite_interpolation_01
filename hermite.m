@@ -10,8 +10,6 @@ n = length(x);
 z = zeros(1, 2*n);
 H = zeros(2*n, 2*n);
 
-fprintf('%d', n);
-
 for i=1:n
     z(2*i) = x(i);
     z(2*i+1) = x(i);
@@ -25,9 +23,6 @@ end;
 
 for i=3:2*n
     for j=3:i
-        %disp('hello')
-        %fprintf('%d',H(i+1,j));
-        H(i+1,j) = 2
-        %H(i+1,j) = (H(i,j-1)-H(i-1,j-1))/(z(i)-z(i-j));
+        H(i+1,j) = (H(i+1,j-1)-H(i,j-1))/(z(i+1)-z((i+2)-j));
     end;
 end;
